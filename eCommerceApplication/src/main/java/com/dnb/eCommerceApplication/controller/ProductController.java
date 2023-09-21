@@ -42,7 +42,7 @@ public class ProductController {
 		return new ResponseEntity(product1, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/getProduct/{productId}")
+	@GetMapping("/{productId}")
 	public ResponseEntity<?> getProductById(@PathVariable("productId") String productId) throws IdNotFoundException  {
 		java.util.Optional<Product> optional = productService.getProductById(productId);
 		if(optional.isPresent()) {
@@ -61,7 +61,7 @@ public class ProductController {
 		
 	}
 	
-	@DeleteMapping("/delete/{productId}")
+	@DeleteMapping("/{productId}")
 	public ResponseEntity<?> deleteProductById(@PathVariable("productId") String productId) throws IdNotFoundException {
 		if(productService.deleteProductById(productId)) {
 			return ResponseEntity.noContent().build();
